@@ -16,6 +16,7 @@
     "vue": "^3.2.47"
   },
   "devDependencies": {
+    "eslint-plugin-react": "^7.31.10",
     "@antfu/eslint-config": "^0.39.1",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@vitejs/plugin-vue": "^4.1.0",
