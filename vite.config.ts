@@ -10,6 +10,9 @@ export default defineConfig({
     vue(),
     Components({}),
     AutoImport({
+      eslintrc: {
+        enabled: true,
+      },
       imports: [
         'vue',
       ],
