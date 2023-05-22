@@ -10,6 +10,7 @@ export default defineConfig({
     vue(),
     Components({}),
     AutoImport({
+      dts: true,
       eslintrc: {
         enabled: true,
       },
