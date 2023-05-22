@@ -23,5 +23,6 @@ module.exports = {
     'vue',
   ],
   rules: {
+    'max-len': ['error', { ignoreStrings: true }],
   },
 }
