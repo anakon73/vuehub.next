@@ -52,6 +52,7 @@ module.exports = {
     'vue/no-ref-object-destructure': ['error'],
     'vue/no-undef-components': ['error', {
       ignorePatterns: [
+        'Story',
         '(F|H)[A-Z]+',
         'RouterLink',
         'GetProps',
