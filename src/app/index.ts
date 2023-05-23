@@ -1,9 +1,10 @@
 import { createApp } from 'vue'
 
+import { applyProviders } from './providers'
 import App from './App.vue'
-
-import { router } from './router/router'
 
 import './styles/index.css'
 
-export const app = createApp(App).use(router)
+export const app = createApp(App)
+
+applyProviders(app)
