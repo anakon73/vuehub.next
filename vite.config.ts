@@ -14,6 +14,7 @@ export default defineConfig({
       },
       imports: [
         'vue',
+        '@vueuse/core',
       ],
     }),
   ],
