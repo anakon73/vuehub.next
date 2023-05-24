@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { VButton } from '@/shared/ui/VButton'
-import { VSearchInput } from '@/shared/ui/VSearch'
+import { VSearchInput } from '@/shared/ui/VSearchInput'
 
 export type Props = {
   homePage?: boolean
   username?: string
 }
+
+const query = ref('')
 
 const props = defineProps<Props>()
 </script>
@@ -31,7 +33,7 @@ const props = defineProps<Props>()
     <div v-else class="flex justify-between px-[13.75rem] py-4">
       <div class="flex items-center gap-5">
         <div class="h-12 w-12 rounded-full bg-white" />
-        <VSearchInput />
+        <VSearchInput v-model:model-value="query" />
       </div>
       <VButton style-variant="primary" class="px-5 py-3.5">
         {{ props.username }}
