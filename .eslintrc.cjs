@@ -59,6 +59,8 @@ module.exports = {
         'SafeTeleport',
         'TeleportTarget',
         'HasPermission',
+        'Variant',
+        'Hst*',
       ],
     }],
     'vue/define-macros-order': 'off',
