@@ -1,5 +1,5 @@
-<script lang="ts" setup>
-import HomePage from '.'
+<script setup lang="ts">
+import { HomePage } from '.'
 </script>
 
 <template>
