@@ -33,7 +33,7 @@ const props = defineProps<Props>()
     <div v-else class="flex justify-between px-[13.75rem] py-4">
       <div class="flex items-center gap-5">
         <div class="h-12 w-12 rounded-full bg-white" />
-        <VSearchInput v-model:model-value="query" />
+        <VSearchInput v-model="query" />
       </div>
       <VButton style-variant="primary" class="px-5 py-3.5">
         {{ props.username }}
