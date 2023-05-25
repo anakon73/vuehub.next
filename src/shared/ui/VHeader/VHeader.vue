@@ -13,7 +13,7 @@ defineProps<Props>()
 </script>
 
 <template>
-  <header class="sticky bg-neutral-800">
+  <header class="fixed top-0 z-20 w-full bg-neutral-800">
     <div v-if="!withSearch" class="flex justify-between px-[13.75rem] py-4">
       <div class="flex items-center gap-5">
         <div class="h-12 w-12 rounded-full bg-white" />
