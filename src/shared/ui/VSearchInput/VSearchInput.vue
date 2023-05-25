@@ -9,7 +9,7 @@ const emits = defineEmits<{
   (e: 'update:modelValue'): void
 }>()
 
-const vModel = useVModel(props, 'modelValue', emits)
+const { modelValue: vModel } = useVModels(props, emits)
 </script>
 
 <template>
