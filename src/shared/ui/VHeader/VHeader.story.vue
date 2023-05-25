@@ -9,9 +9,9 @@ import { VHeader } from '.'
         username="Username"
       />
     </Variant>
-    <Variant title="home page">
+    <Variant title="with search">
       <VHeader
-        home-page
+        with-search
         username="Username"
       />
     </Variant>
