@@ -4,13 +4,13 @@ import { logEvent } from 'histoire/client'
 import { VButton } from '.'
 import { styleVariants } from './types'
 
-type IState = {
+type state = {
   styleVariant: styleVariants
   disabled: boolean
   text: string
 }
 
-const state = reactive<IState>({
+const state = reactive<state>({
   styleVariant: 'regular',
   disabled: false,
   text: 'Click',
