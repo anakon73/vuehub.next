@@ -8,7 +8,7 @@ export default {
     extend: {
       fontFamily: {
         roboto: ['Roboto'],
-        robotomono: ['Roboto', 'Mono'],
+        robotomono: ['Roboto Mono'],
       },
     },
   },
