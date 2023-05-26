@@ -16,7 +16,7 @@ defineProps<Props>()
     :class="useClasses(
       [
         'font-roboto text-xl font-light rounded-xl leading-6',
-        styleVariant === 'regular' && 'bg-zinc-100',
+        styleVariant === 'regular' && 'bg-zinc-100 text-black',
         styleVariant === 'primary' && 'bg-blue-500 text-zinc-100',
         styleVariant === 'dark' && 'bg-neutral-800 text-zinc-100',
       ],
