@@ -75,6 +75,7 @@ module.exports = {
       },
     }],
     'vue/operator-linebreak': 'off',
+    'vue/no-dupe-keys': 'off',
 
     // eslint-plugin-react
     'react/jsx-boolean-value': 'error',
