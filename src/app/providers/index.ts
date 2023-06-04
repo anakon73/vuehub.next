@@ -1,10 +1,9 @@
 import type { App } from 'vue'
 
-import { VueQueryPlugin } from '@tanstack/vue-query'
-
 import { router } from './router'
+import { vueQuery } from './vue-query'
 
 export function applyProviders(app: App) {
-  app.use(VueQueryPlugin)
+  app.use(vueQuery)
   app.use(router)
 }
