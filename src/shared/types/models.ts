@@ -8,8 +8,15 @@ export type Repository = {
     avatarUrl: string
     url: string
   }
+  gitUrl: string
   pushedAt: string
   language: string
+  branchesUrl: string
+  sshUrl: string
+  collaboratorsUrl: string
+  contentsUrl: string
+  description: string | null
+  updatedAt: string
 }
 
 export type User = {
