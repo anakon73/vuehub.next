@@ -18,6 +18,9 @@ const { data: user, isFetching: isFetchingUser } = useUser('extrem7')
 const { data: repositories, isFetching } = useRepositories('extrem7')
 
 const showMore = ref<boolean>(false)
+
+const currentRepositories = computed(
+  () => !showMore ? repositories.value?.splice(0, 4) : repositories.value)
 </script>
 
 <template v-if="isLoading">
@@ -66,8 +69,7 @@ const showMore = ref<boolean>(false)
       </div>
       <div class="flex w-full max-w-[40rem] flex-col gap-6">
         <VRepositoryCard
-          v-for="repository in
-          (!showMore ? repositories?.splice(0, 4) : repositories)"
+          v-for="repository in currentRepositories"
           :key="repository.fullName"
           :is-fetching="isFetching"
           :repository="repository"
