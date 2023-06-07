@@ -9,18 +9,26 @@ import { VRepositoryCard } from '@/entities/repository'
 
 import { VLayout } from '@/shared/ui/VLayout'
 import { VButton } from '@/shared/ui/VButton'
-
 import { useUser } from '@/shared/api/user'
 import { useRepositories } from '@/shared/api/repository'
 import { useClasses } from '@/shared/lib/composables'
 
+import { RadioButtons } from './ui/RadioButtons/index.js'
+
+const selectedRepositories = ref('own')
+
 const { data: user, isFetching: isFetchingUser } = useUser('extrem7')
-const { data: repositories, isFetching } = useRepositories('extrem7')
+const {
+  data: repositories, isFetching,
+} = useRepositories('extrem7', selectedRepositories)
 
 const showMore = ref<boolean>(false)
 
-const currentRepositories = computed(
-  () => !showMore ? repositories.value?.splice(0, 4) : repositories.value)
+const currentRepositories = computed(() => {
+  return showMore.value
+    ? repositories.value
+    : repositories.value?.slice(0, 4)
+})
 </script>
 
 <template v-if="isLoading">
@@ -67,10 +75,11 @@ const currentRepositories = computed(
           Edit profile
         </VButton>
       </div>
-      <div class="flex w-full max-w-[40rem] flex-col gap-6">
+      <div class="flex w-full max-w-[40rem] flex-col gap-5">
+        <RadioButtons v-model="selectedRepositories" />
         <VRepositoryCard
           v-for="repository in currentRepositories"
-          :key="repository.fullName"
+          :key="repository.id"
           :is-fetching="isFetching"
           :repository="repository"
         />
@@ -78,7 +87,7 @@ const currentRepositories = computed(
           style-variant="primary"
           :class="useClasses([
             'px-7 py-3 self-center',
-            showMore && 'mb-10',
+            showMore && 'mb-8',
           ])"
           @click="showMore = !showMore"
         >

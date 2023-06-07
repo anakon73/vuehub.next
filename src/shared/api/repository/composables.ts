@@ -2,9 +2,9 @@ import { useQuery } from '@tanstack/vue-query'
 
 import { repositoriesFetcher, repositoryFetcher, repositoryKeys } from '.'
 
-export function useRepositories(login: string) {
-  return useQuery(repositoryKeys.GetRepositories,
-    () => repositoriesFetcher(login), {
+export function useRepositories(login: string, selected: Ref<string>) {
+  return useQuery(repositoryKeys.GetRepositories(selected),
+    () => repositoriesFetcher(login, selected), {
       keepPreviousData: false,
       refetchOnWindowFocus: false,
     })
