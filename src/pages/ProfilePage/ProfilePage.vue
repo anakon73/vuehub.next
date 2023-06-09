@@ -13,7 +13,7 @@ import { useUser } from '@/shared/api/user'
 import { useRepositories } from '@/shared/api/repository'
 import { useClasses } from '@/shared/lib/composables'
 
-import { RadioButtons } from './ui/RadioButtons/index.js'
+import { RadioButtons } from './ui/RadioButtons'
 
 const selectedRepositories = ref('own')
 
