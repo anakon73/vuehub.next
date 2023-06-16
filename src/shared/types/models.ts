@@ -17,6 +17,7 @@ export type Repository = {
   contentsUrl: string
   description: string | null
   updatedAt: string
+  defaultBranch: string
 }
 
 export type User = {
@@ -43,4 +44,19 @@ export type User = {
   publicRepos: number
   followers: number
   following: number
+}
+
+export type Commit = {
+  sha: string
+  commit: {
+    author: {
+      name: string
+      email: string
+      date: string
+    }
+    message: string
+    url: string
+    commentCount: number
+    commentsUrl?: string
+  }
 }
