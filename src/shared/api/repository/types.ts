@@ -19,6 +19,7 @@ export const repositoryAPI = z.object({
   contents_url: z.string(),
   description: z.string().nullable(),
   updated_at: z.string(),
+  default_branch: z.string(),
 })
 
 export type repositoryAPI = z.infer<typeof repositoryAPI>

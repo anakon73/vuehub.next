@@ -16,6 +16,7 @@ export function normalizeRepository(
     pushed_at,
     ssh_url,
     updated_at,
+    default_branch,
     owner: {
       avatar_url,
       id,
@@ -41,6 +42,7 @@ export function normalizeRepository(
     pushedAt: pushed_at,
     sshUrl: ssh_url,
     updatedAt: updated_at,
+    defaultBranch: default_branch,
     owner: {
       avatarUrl: avatar_url,
       id,
