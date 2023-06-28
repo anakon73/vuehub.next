@@ -60,3 +60,13 @@ export type Commit = {
     commentsUrl?: string
   }
 }
+
+export type Content = {
+  name: string
+  path: string
+  sha: string
+  size: number
+  type: 'dir' | 'file'
+  url: string
+  downloadUrl: string | null
+}
