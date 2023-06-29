@@ -18,14 +18,14 @@ export async function contentFetcher(login: string, repoName: string) {
     .parse(await fetch(
       `${BASE_URL}${contentEndpoints.getContent(login, repoName)}`,
     ).then((r) => r.json())).sort((a, b) => {
-      if (a.type === 'dir') {
+      if (a.type === b.type) {
+        return a.name.localeCompare(b.name)
+      }
+      else if (a.type === 'dir') {
         return -1
       }
-      else if (b.type === 'file') {
-        return 1
-      }
       else {
-        return a.name.localeCompare(b.name)
+        return 1
       }
     })
     .map((repo) => normalizeContent(repo))
