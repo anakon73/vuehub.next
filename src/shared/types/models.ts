@@ -70,3 +70,12 @@ export type Content = {
   url: string
   downloadUrl: string | null
 }
+
+export type Branch = {
+  name: string
+  commit: {
+    sha: string
+    url: string
+  }
+  protected: boolean
+}
