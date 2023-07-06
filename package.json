@@ -43,6 +43,7 @@
     "typescript": "*",
     "unplugin-auto-import": "^0.16.2",
     "vite": "^4.3.2",
+    "vite-plugin-rewrite-all": "^1.0.1",
     "vue-tsc": "^1.4.2"
   },
   "config": {
