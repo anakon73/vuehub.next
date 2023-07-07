@@ -4,6 +4,9 @@ import { RepositoryPage } from '.'
 
 <template>
   <Story title="Pages/RepositoryPage">
-    <RepositoryPage />
+    <RepositoryPage
+      user="anakon73"
+      repo="vuehub.next"
+    />
   </Story>
 </template>
