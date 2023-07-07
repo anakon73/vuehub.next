@@ -5,7 +5,7 @@ import { BASE_URL } from '../lib'
 import { commitAPI, normalizeCommit } from '.'
 
 export const commitKeys = {
-  GetCommits: ['commits'],
+  GetCommits: (repoName: Ref<string>) => ['commits', repoName],
 } as const
 
 export const commitEndpoints = {

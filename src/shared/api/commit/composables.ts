@@ -2,9 +2,9 @@ import { useQuery } from '@tanstack/vue-query'
 
 import { commitKeys, commitsFetcher } from '.'
 
-export function useCommits(login: string, repoName: string) {
-  return useQuery(commitKeys.GetCommits,
-    () => commitsFetcher(login, repoName), {
+export function useCommits(login: Ref<string>, repoName: Ref<string>) {
+  return useQuery(commitKeys.GetCommits(repoName),
+    () => commitsFetcher(unref(login), unref(repoName)), {
       keepPreviousData: false,
       refetchOnWindowFocus: false,
     })

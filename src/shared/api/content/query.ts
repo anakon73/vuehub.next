@@ -6,7 +6,9 @@ import { contentAPI, normalizeContent } from '.'
 import type { Branch } from '@/shared/types'
 
 export const contentKeys = {
-  GetContent: (branch: Ref<Branch | undefined>) => ['content', branch],
+  GetContent: (
+    login: Ref<string>, repoName: Ref<string>, branch: Ref<Branch | undefined>,
+  ) => ['content', login, repoName, branch],
 } as const
 
 export const contentEndpoints = {

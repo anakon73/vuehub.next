@@ -10,7 +10,8 @@ export const repositoryKeys = {
       'repositories',
       selected,
     ],
-  GetRepository: ['repository', 'user'],
+  GetRepository: (login: Ref<string>, repoName: Ref<string>) =>
+    ['repository', 'user', login, repoName],
 } as const
 
 export const repositoryEndpoints = {

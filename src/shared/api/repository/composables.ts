@@ -10,9 +10,9 @@ export function useRepositories(login: string, selected: Ref<string>) {
     })
 }
 
-export function useRepository(login: string, repoName: string) {
-  return useQuery(repositoryKeys.GetRepository,
-    () => repositoryFetcher(login, repoName), {
+export function useRepository(login: Ref<string>, repoName: Ref<string>) {
+  return useQuery(repositoryKeys.GetRepository(login, repoName),
+    () => repositoryFetcher(unref(login), unref(repoName)), {
       keepPreviousData: false,
       refetchOnWindowFocus: false,
     })

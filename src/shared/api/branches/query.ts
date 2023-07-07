@@ -5,7 +5,7 @@ import { BASE_URL } from '../lib'
 import { BranchAPI } from '.'
 
 export const branchKeys = {
-  GetBranches: ['branches'],
+  GetBranches: (repoName: Ref<string>) => ['branches', repoName],
 } as const
 
 export const branchEndpoints = {
