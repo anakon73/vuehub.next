@@ -46,7 +46,10 @@ const { modelValue, options } = defineProps<Props>()
         </VButton>
       </ListboxButton>
       <ListboxOptions
-        class="absolute max-h-96 max-w-[14rem] overflow-y-scroll pt-2"
+        :class="useClasses([
+          'absolute max-h-96 max-w-[14rem]  pt-2',
+          options.length > 1 ? 'overflow-x-auto' : '',
+        ])"
       >
         <ListboxOption
           v-for="(option, index) in options"
