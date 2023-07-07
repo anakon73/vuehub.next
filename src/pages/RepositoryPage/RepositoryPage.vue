@@ -12,9 +12,24 @@ import { VButton } from '@/shared/ui/VButton'
 import { VLayout } from '@/shared/ui/VLayout'
 import { VSelect } from '@/shared/ui/VSelect'
 
-const { data: repository } = useRepository('extrem7', 'voiture.vue')
-const { data: commits } = useCommits('extrem7', 'voiture.vue')
-const { data: branches } = useBranches('extrem7', 'voiture.vue')
+export type Props = {
+  user: string
+  repo: string
+}
+
+const props = defineProps<Props>()
+
+const { repo, user } = toRefs(props)
+
+const {
+  data: repository,
+} = useRepository(user, repo)
+const {
+  data: commits,
+} = useCommits(user, repo)
+const {
+  data: branches,
+} = useBranches(user, repo)
 
 const showCopyClipBoard = ref<boolean>(false)
 
@@ -36,7 +51,7 @@ watch(branches, () => {
 
 const {
   data: content, isLoading: isLoadingContent,
-} = useContent('extrem7', 'voiture.vue', selectedBranch)
+} = useContent(user, repo, selectedBranch)
 </script>
 
 <template>
@@ -55,13 +70,11 @@ const {
       >
         SSH Copied!
       </div>
-      <div>
-        <div class="mb-5 font-roboto text-2xl">
-          {{ repository.fullName }}
-        </div>
-      </div>
-      <div class="flex gap-5 font-robotomono">
+      <div class="flex justify-center gap-5 font-robotomono">
         <div class="w-full max-w-[46.5625rem]">
+          <div class="mb-5 font-roboto text-2xl">
+            {{ repository.fullName }}
+          </div>
           <div class="mb-5 flex w-full justify-between">
             <VSelect
               v-if="branches !== undefined"
@@ -76,7 +89,7 @@ const {
               Download
             </VButton>
           </div>
-          <div class="text-lg ">
+          <div class="mb-4 text-lg">
             <div class="flex w-full items-center gap-5 bg-blue-500 py-4 pl-4">
               <div class="h-12 w-12 rounded-full bg-zinc-100" />
               <div class="overflow-hidden pr-4 text-lg font-medium">
