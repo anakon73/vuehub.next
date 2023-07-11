@@ -3,7 +3,7 @@ import { BASE_URL } from '../lib'
 import { normalizeUser, userAPI } from '.'
 
 export const userKeys = {
-  GetUser: ['user'],
+  GetUser: (login: Ref<string>) => ['user', login],
 } as const
 
 export const userEndpoints = {

@@ -1,10 +1,14 @@
 import { useQuery } from '@tanstack/vue-query'
 
+import type { MaybeRef } from 'vue'
+
 import { repositoriesFetcher, repositoryFetcher, repositoryKeys } from '.'
 
-export function useRepositories(login: string, selected: Ref<string>) {
-  return useQuery(repositoryKeys.GetRepositories(selected),
-    () => repositoriesFetcher(login, selected), {
+export function useRepositories(
+  login: MaybeRef<string | undefined>, selected: Ref<string>,
+) {
+  return useQuery(repositoryKeys.GetRepositories(login, selected),
+    () => repositoriesFetcher(unref(login), selected), {
       keepPreviousData: false,
       refetchOnWindowFocus: false,
     })

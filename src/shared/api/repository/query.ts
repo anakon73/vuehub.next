@@ -1,13 +1,18 @@
 import { z } from 'zod'
 
+import type { MaybeRef } from 'vue'
+
 import { BASE_URL } from '../lib'
 
 import { normalizeRepository, repositoryAPI } from '.'
 
 export const repositoryKeys = {
-  GetRepositories: (selected: Ref<string>) =>
+  GetRepositories: (
+    login: MaybeRef<string | undefined>, selected: Ref<string>,
+  ) =>
     [
       'repositories',
+      login,
       selected,
     ],
   GetRepository: (login: Ref<string>, repoName: Ref<string>) =>
@@ -15,7 +20,7 @@ export const repositoryKeys = {
 } as const
 
 export const repositoryEndpoints = {
-  getRepositories: (login: string, selected: Ref<string>) => {
+  getRepositories: (login: string | undefined, selected: Ref<string>) => {
     if (selected.value === 'starred') {
       return `/users/${login}/starred`
     }
@@ -28,7 +33,7 @@ export const repositoryEndpoints = {
 }
 
 export async function repositoriesFetcher(
-  login: string, selected: Ref<string>,
+  login: string | undefined, selected: Ref<string>,
 ) {
   return z.array(repositoryAPI)
     .parse(await fetch(
