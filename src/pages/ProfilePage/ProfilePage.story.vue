@@ -4,6 +4,6 @@ import { ProfilePage } from '.'
 
 <template>
   <Story title="Pages/ProfilePage">
-    <ProfilePage />
+    <ProfilePage user="extrem7" />
   </Story>
 </template>
