@@ -15,12 +15,23 @@ import { useClasses } from '@/shared/lib/composables'
 
 import { RadioButtons } from './ui/RadioButtons'
 
+export type Props = {
+  user: string
+}
+
+const props = defineProps<Props>()
+
+const { user } = toRefs(props)
+
 const selectedRepositories = ref('own')
 
-const { data: user, isFetching: isFetchingUser } = useUser('extrem7')
+const { data: login, isFetching: isFetchingUser } = useUser(user)
+
+const username = computed(() => login.value?.login)
+
 const {
   data: repositories, isFetching,
-} = useRepositories('extrem7', selectedRepositories)
+} = useRepositories(username, selectedRepositories)
 
 const showMore = ref<boolean>(false)
 
@@ -36,18 +47,18 @@ const currentRepositories = computed(() => {
     <div v-if="isFetchingUser" class="mt-20">
       Loading...
     </div>
-    <div v-else-if="user === undefined " class="mt-20">
+    <div v-else-if="login === undefined " class="mt-20">
       Loading...
     </div>
     <div v-else class="mt-32 flex justify-evenly gap-4 px-[13.75rem]">
       <div class="font-roboto">
         <img
-          :src="user.avatarUrl"
+          :src="login.avatarUrl"
           alt="avatar"
           class="h-96 max-w-xs rounded-[10px] bg-blue-500 object-cover"
         >
         <div class="mb-4 mt-5 text-4xl font-medium">
-          {{ user.login }}
+          {{ login.login }}
         </div>
         <div
           class="
@@ -55,17 +66,17 @@ const currentRepositories = computed(() => {
             font-normal leading-7 text-slate-700
             "
         >
-          <p v-if="user.company" class="flex items-center gap-3">
+          <p v-if="login.company" class="flex items-center gap-3">
             <BuildingOffice2Icon class="h-4 w-4" />
-            {{ user.company }}
+            {{ login.company }}
           </p>
-          <p v-if="user.location" class="flex items-center gap-3">
+          <p v-if="login.location" class="flex items-center gap-3">
             <MapPinIcon class="h-4 w-4" />
-            {{ user.location }}
+            {{ login.location }}
           </p>
-          <p v-if="user.blog" class="flex items-center gap-3">
+          <p v-if="login.blog" class="flex items-center gap-3">
             <LinkIcon class="h-4 w-4" />
-            {{ user.blog }}
+            {{ login.blog }}
           </p>
         </div>
         <VButton

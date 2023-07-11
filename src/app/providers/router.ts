@@ -6,7 +6,12 @@ import { RepositoryPage } from '@/pages/RepositoryPage'
 
 const routes = [
   { name: 'HomePage', path: '/', component: HomePage },
-  { name: 'ProfilePage', path: '/profile', component: ProfilePage },
+  {
+    name: 'ProfilePage',
+    path: '/:user',
+    component: ProfilePage,
+    props: true,
+  },
   {
     name: 'RepositoryPage',
     path: '/:user/:repo',
