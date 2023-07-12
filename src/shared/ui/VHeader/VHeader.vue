@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { VButton } from '@/shared/ui/VButton'
-import { VSearchInput } from '@/shared/ui/VSearchInput'
+import { VInput } from '@/shared/ui/VInput'
 
 export type Props = {
   withSearch?: boolean
@@ -37,7 +37,7 @@ defineProps<Props>()
     <div v-else class="flex justify-between px-[13.75rem] py-4">
       <div class="flex items-center gap-5">
         <div class="h-12 w-12 rounded-full bg-white" />
-        <VSearchInput v-model="query" />
+        <VInput v-model="query" />
       </div>
       <VButton style-variant="primary" class="px-5 py-3.5">
         {{ username }}
