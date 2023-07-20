@@ -79,3 +79,40 @@ export type Branch = {
   }
   protected: boolean
 }
+
+export type SearchUserItem = {
+  type: string
+  login: string
+  id: number
+  avatarUrl: string
+  url: string
+  reposUrl: string
+}
+
+export type SearchRepositoryItem = {
+  id: number
+  name: string
+  fullName: string
+  private: boolean
+  owner: {
+    login: string
+    id: number
+    avatarUrl: string
+    url: string
+    type: string
+  }
+  stargazersCount: number
+  defaultBranch: string
+}
+
+export type SearchUsers = {
+  totalCount: number
+  incompleteResults: boolean
+  items: SearchUserItem[]
+}
+
+export type SearchRepositories = {
+  totalCount: number
+  incompleteResults: boolean
+  items: SearchRepositoryItem[]
+}
