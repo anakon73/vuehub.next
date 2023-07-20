@@ -17,7 +17,8 @@ const { modelValue: vModel } = useVModels(props, emits)
     v-model="vModel"
     class="
     rounded-xl border border-zinc-100 bg-inherit px-4 py-3.5
-    text-zinc-100 placeholder:text-zinc-100 focus:outline-none
+    font-medium text-zinc-100 placeholder:text-zinc-100
+    focus:outline-none
     "
     placeholder="Search..."
     type="text"
