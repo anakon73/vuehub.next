@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 import { BASE_URL } from '../lib'
 
-import { BranchAPI } from '.'
+import { BranchAPI, normalizeBranches } from '.'
 
 export const branchKeys = {
   GetBranches: (repoName: Ref<string>) => ['branches', repoName],
@@ -18,5 +18,5 @@ export async function branchFetcher(login: string, repoName: string) {
     .parse(await fetch(
     `${BASE_URL}${branchEndpoints.getBranches(login, repoName)}`,
     ).then((r) => r.json()),
-    )
+    ).map((branch) => normalizeBranches(branch))
 }
