@@ -21,32 +21,36 @@ const usersArray = computed(() => {
 </script>
 
 <template>
-  <div>
+  <div class="relative">
     <VInput v-model:model-value="query" />
-    <div v-if="queryDebounced">
-      <div class="mt-3 max-w-xs rounded-xl bg-neutral-800 px-4 py-2 shadow-md">
-        <div
-          v-if="usersArray!.length >= 1"
-          class="items-center gap-2 text-zinc-600"
-        >
-          <span class="font-medium">Users</span>
-          <VSearchItem
-            v-for="user in usersArray"
-            :key="user.id"
-            :user="user"
-          />
-        </div>
-        <div
-          v-if="repositoriesArray!.length >= 1"
-          class="items-center gap-2 text-zinc-600"
-        >
-          <span class="font-medium">Repositories</span>
-          <VSearchItem
-            v-for="repository in repositoriesArray"
-            :key="repository.id"
-            :repository="repository"
-          />
-        </div>
+    <div
+      v-if="queryDebounced"
+      class="
+      absolute top-14 w-[13.4375rem] rounded-b-xl bg-neutral-800
+      px-4 py-2 shadow-md
+      "
+    >
+      <div
+        v-if="usersArray!.length >= 1"
+        class="items-center gap-2 text-zinc-600"
+      >
+        <span class="font-medium">Users</span>
+        <VSearchItem
+          v-for="user in usersArray"
+          :key="user.id"
+          :user="user"
+        />
+      </div>
+      <div
+        v-if="repositoriesArray!.length >= 1"
+        class="items-center gap-2 text-zinc-600"
+      >
+        <span class="font-medium">Repositories</span>
+        <VSearchItem
+          v-for="repository in repositoriesArray"
+          :key="repository.id"
+          :repository="repository"
+        />
       </div>
     </div>
   </div>
