@@ -14,7 +14,14 @@ const { user, repository } = toRefs(props)
 
 <template>
   <div>
-    <RouterLink v-if="user" :to="{ path: `/${user.login}` }">
+    <RouterLink
+      v-if="user"
+      :to="{
+        path: '/',
+        name: 'ProfilePage',
+        params: { user: user.login },
+      }"
+    >
       <div
         class="
         flex items-center gap-2 whitespace-nowrap
@@ -29,7 +36,14 @@ const { user, repository } = toRefs(props)
         </div>
       </div>
     </RouterLink>
-    <RouterLink v-if="repository" :to="{ path: `/${repository.fullName}` }">
+    <RouterLink
+      v-if="repository"
+      :to="{
+        path: '/',
+        name: 'RepositoryPage',
+        params: { user: repository.owner.login, repo: repository.name },
+      }"
+    >
       <div
         class="
         flex items-center gap-2 whitespace-nowrap
