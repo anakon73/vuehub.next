@@ -43,7 +43,7 @@ const currentRepositories = computed(() => {
 </script>
 
 <template v-if="isLoading">
-  <VLayout with-search>
+  <VLayout>
     <div v-if="isFetchingUser" class="mt-20">
       Loading...
     </div>

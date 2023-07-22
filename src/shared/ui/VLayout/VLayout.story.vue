@@ -12,7 +12,7 @@ import { VLayout } from '.'
       </VLayout>
     </Variant>
     <Variant title="with search">
-      <VLayout with-search>
+      <VLayout>
         <div class="mt-10 text-center text-5xl text-red-500">
           Content
         </div>

@@ -55,7 +55,7 @@ const {
 </script>
 
 <template>
-  <VLayout with-search>
+  <VLayout>
     <div v-if="repository === undefined">
       Repo is not found
     </div>
