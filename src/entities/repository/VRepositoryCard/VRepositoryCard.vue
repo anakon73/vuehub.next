@@ -19,52 +19,61 @@ const liked = ref<boolean>(false)
 </script>
 
 <template>
-  <div
-    v-if="!isFetching || repository !== undefined"
-    class="
-    rounded-[10px] bg-zinc-100
-    px-5 pb-4 pt-5 font-robotomono text-neutral-800
+  <RouterLink
+    :to="{
+      path: '/',
+      name: 'RepositoryPage',
+      params: { user: repository.owner.login, repo: repository.name },
+    }
     "
   >
-    <div class="mb-4 flex items-end justify-between">
-      <div class="truncate text-2xl font-medium">
-        {{ repository.name }}
+    <div
+      v-if="!isFetching || repository !== undefined"
+      class="
+      rounded-[10px] bg-zinc-100
+      px-5 pb-4 pt-5 font-robotomono text-neutral-800
+      "
+    >
+      <div class="mb-4 flex items-end justify-between">
+        <div class="truncate text-2xl font-medium">
+          {{ repository.name }}
+        </div>
+        <button v-if="liked">
+          <HeartIconSolid
+            class="h-7 w-8 text-blue-500"
+            @click="liked = false"
+          />
+        </button>
+        <button
+          v-else
+        >
+          <HeartIcon
+            class="h-7 w-8 text-blue-500"
+            @click="liked = true"
+          />
+        </button>
       </div>
-      <button v-if="liked">
-        <HeartIconSolid
-          class="h-7 w-8 text-blue-500"
-          @click="liked = false"
-        />
-      </button>
-      <button
-        v-else
-      >
-        <HeartIcon
-          class="h-7 w-8 text-blue-500"
-          @click="liked = true"
-        />
-      </button>
+      <div class="mb-1.5 text-lg font-normal">
+        {{ repository.language }}
+      </div>
+      <div class="text-lg font-normal">
+        {{ data }}
+      </div>
     </div>
-    <div class="mb-1.5 text-lg font-normal">
-      {{ repository.language }}
-    </div>
-    <div class="text-lg font-normal">
-      {{ data }}
-    </div>
-  </div>
-  <div
-    v-else
-    class="
-    rounded-[10px] bg-zinc-100
-    px-5 pb-4 pt-5 font-robotomono text-neutral-800
-    "
-  >
-    <div class="mb-4 h-4 max-w-xs rounded-full bg-gray-200" />
     <div
-      class="mb-2 h-4 max-w-[4rem] rounded-full bg-gray-200"
-    />
-    <div
-      class="mb-2 h-4 max-w-[10rem] rounded-full bg-gray-200"
-    />
-  </div>
+      v-else
+      class="
+      rounded-[10px] bg-zinc-100
+      px-5 pb-4 pt-5 font-robotomono text-neutral-800
+      "
+    >
+      <div class="mb-4 h-4 max-w-xs rounded-full bg-gray-200" />
+      <div
+        class="mb-2 h-4 max-w-[4rem] rounded-full bg-gray-200"
+      />
+      <div
+        class="mb-2 h-4 max-w-[10rem] rounded-full bg-gray-200"
+      />
+    </div>
+  </RouterLink>
 </template>
