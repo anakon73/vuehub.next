@@ -6,6 +6,19 @@ const query = ref('')
 
 <template>
   <Story title="Shared/UI/VInput">
-    <VInput v-model:model-value="query" />
+    <Variant title="black">
+      <VInput
+        v-model:model-value="query"
+        placeholder="input"
+        style-variant="black"
+      />
+    </Variant>
+    <Variant title="white">
+      <VInput
+        v-model:model-value="query"
+        placeholder="input"
+        style-variant="white"
+      />
+    </Variant>
   </Story>
 </template>
