@@ -22,7 +22,11 @@ const usersArray = computed(() => {
 
 <template>
   <div class="relative">
-    <VInput v-model:model-value="query" />
+    <VInput
+      v-model:model-value="query"
+      style-variant="white"
+      placeholder="Search..."
+    />
     <div
       v-if="queryDebounced"
       class="
