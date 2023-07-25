@@ -1,6 +1,10 @@
 <script setup lang='ts'>
+import { useClasses } from '@/shared/lib/composables'
+import type { styleVariants } from './types'
+
 export type Props = {
   modelValue?: string
+  styleVariant?: styleVariants
 }
 
 const props = defineProps<Props>()
@@ -15,12 +19,14 @@ const { modelValue: vModel } = useVModels(props, emits)
 <template>
   <input
     v-model="vModel"
-    class="
-    rounded-xl border border-zinc-100 bg-inherit px-4 py-3.5
-    text-zinc-100 placeholder:text-zinc-100
-    focus:outline-none
+    :class="useClasses([
+      'rounded-xl border bg-inherit px-4 py-3.5 focus:outline-none',
+      styleVariant === 'white'
+        && 'border-zinc-100 text-zinc-100 placeholder:text-zinc-100/50',
+      styleVariant === 'black'
+        && 'border-black text-black placeholder:text-black/50',
+    ])
     "
-    placeholder="Search..."
     type="text"
   >
 </template>
