@@ -3,9 +3,14 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { HomePage } from '@/pages/HomePage'
 import { ProfilePage } from '@/pages/ProfilePage'
 import { RepositoryPage } from '@/pages/RepositoryPage'
+import { RegisterPage } from '@/pages/RegisterPage'
 
 const routes = [
-  { name: 'HomePage', path: '/', component: HomePage },
+  {
+    name: 'HomePage',
+    path: '/',
+    component: HomePage,
+  },
   {
     name: 'ProfilePage',
     path: '/:user',
@@ -17,6 +22,11 @@ const routes = [
     path: '/:user/:repo',
     component: RepositoryPage,
     props: true,
+  },
+  {
+    name: 'RegisterPage',
+    path: '/login',
+    component: RegisterPage,
   },
 ]
 
