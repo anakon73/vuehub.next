@@ -5,7 +5,9 @@ import { SearchForm } from '.'
 <template>
   <Story title="Widgets/SearchForm">
     <Variant title="default">
-      <SearchForm />
+      <div class="h-screen">
+        <SearchForm />
+      </div>
     </Variant>
   </Story>
 </template>
