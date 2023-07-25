@@ -19,9 +19,11 @@ defineProps<Props>()
         </RouterLink>
         <SearchForm />
       </div>
-      <VButton style-variant="primary" class="px-5 py-3.5">
-        {{ username }}
-      </VButton>
+      <RouterLink to="/login">
+        <VButton style-variant="primary" class="px-5 py-3.5">
+          {{ username }}
+        </VButton>
+      </RouterLink>
     </div>
   </header>
 </template>
