@@ -23,7 +23,8 @@ const password = ref('')
       <div class="w-full px-10">
         <VInput
           v-model:model-value="username"
-          class="w-full border-black/40 text-xl text-black/100"
+          style-variant="black"
+          class="w-full text-xl"
         />
       </div>
       <p class="pb-2 pt-7 text-2xl">
@@ -32,8 +33,9 @@ const password = ref('')
       <div class="w-full px-10">
         <VInput
           v-model:model-value="password"
+          style-variant="black"
           type="password"
-          class="w-full border-black/40 text-xl text-black/100"
+          class="w-full text-xl"
         />
       </div>
       <p class="pb-5 pt-2 text-lg font-light">
