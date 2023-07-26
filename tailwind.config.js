@@ -9,6 +9,7 @@ export default {
       fontFamily: {
         roboto: ['Roboto'],
         robotomono: ['Roboto Mono'],
+        poppins: ['Poppins'],
       },
     },
   },
