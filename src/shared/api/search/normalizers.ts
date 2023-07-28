@@ -37,7 +37,13 @@ export function normalizeSearchRepositories(
     items: items.map(({
       default_branch,
       full_name,
-      stargazers_count,
+      branches_url,
+      collaborators_url,
+      contents_url,
+      git_url,
+      pushed_at,
+      ssh_url,
+      updated_at,
       owner,
       ...item
     }) => {
@@ -47,10 +53,11 @@ export function normalizeSearchRepositories(
           'id',
           'name',
           'private',
+          'description',
+          'language',
         ),
         defaultBranch: default_branch,
         fullName: full_name,
-        stargazersCount: stargazers_count,
         owner: {
           avatarUrl: owner.avatar_url,
           id: owner.id,
@@ -58,6 +65,13 @@ export function normalizeSearchRepositories(
           type: owner.type,
           url: owner.url,
         },
+        branchesUrl: branches_url,
+        collaboratorsUrl: collaborators_url,
+        contentsUrl: contents_url,
+        gitUrl: git_url,
+        pushedAt: pushed_at,
+        sshUrl: ssh_url,
+        updatedAt: updated_at,
       }
     }),
   }
