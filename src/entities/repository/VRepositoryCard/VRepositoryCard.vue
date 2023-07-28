@@ -2,7 +2,7 @@
 import { HeartIcon } from '@heroicons/vue/24/outline'
 import { HeartIcon as HeartIconSolid } from '@heroicons/vue/24/solid'
 
-import { type Repository } from '@/shared/types'
+import type { Repository } from '@/shared/types'
 
 export interface Props {
   repository: Repository
@@ -29,6 +29,7 @@ const liked = ref<boolean>(false)
   >
     <div
       v-if="!isFetching || repository !== undefined"
+      :="$attrs"
       class="
       rounded-[10px] bg-zinc-100
       px-5 pb-4 pt-5 font-robotomono text-neutral-800
@@ -41,7 +42,7 @@ const liked = ref<boolean>(false)
         <button v-if="liked">
           <HeartIconSolid
             class="h-7 w-8 text-blue-500"
-            @click="liked = false"
+            @click.prevent="liked = false"
           />
         </button>
         <button
@@ -49,7 +50,7 @@ const liked = ref<boolean>(false)
         >
           <HeartIcon
             class="h-7 w-8 text-blue-500"
-            @click="liked = true"
+            @click.prevent="liked = true"
           />
         </button>
       </div>
