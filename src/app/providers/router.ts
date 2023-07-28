@@ -5,6 +5,7 @@ import { ProfilePage } from '@/pages/ProfilePage'
 import { RepositoryPage } from '@/pages/RepositoryPage'
 import { RegisterPage } from '@/pages/RegisterPage'
 import { SearchPage } from '@/pages/SearchPage'
+import { NotFoundPage } from '@/pages/NotFoundPage'
 
 const routes = [
   {
@@ -33,6 +34,11 @@ const routes = [
     name: 'SearchPage',
     path: '/search',
     component: SearchPage,
+  },
+  {
+    name: 'NotFoundPage',
+    path: '/:catchAll(.*)',
+    component: NotFoundPage,
   },
 ]
 
