@@ -32,7 +32,7 @@ export const searchRepositoryAPI = z.object({
     }),
     git_url: z.string(),
     pushed_at: z.string(),
-    language: z.string(),
+    language: z.string().nullable(),
     branches_url: z.string(),
     ssh_url: z.string(),
     collaborators_url: z.string(),
