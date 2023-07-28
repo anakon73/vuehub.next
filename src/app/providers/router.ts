@@ -4,6 +4,7 @@ import { HomePage } from '@/pages/HomePage'
 import { ProfilePage } from '@/pages/ProfilePage'
 import { RepositoryPage } from '@/pages/RepositoryPage'
 import { RegisterPage } from '@/pages/RegisterPage'
+import { SearchPage } from '@/pages/SearchPage'
 
 const routes = [
   {
@@ -27,6 +28,11 @@ const routes = [
     name: 'RegisterPage',
     path: '/login',
     component: RegisterPage,
+  },
+  {
+    name: 'SearchPage',
+    path: '/search',
+    component: SearchPage,
   },
 ]
 
