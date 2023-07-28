@@ -101,7 +101,15 @@ export type SearchRepositoryItem = {
     url: string
     type: string
   }
-  stargazersCount: number
+  gitUrl: string
+  pushedAt: string
+  language: string
+  branchesUrl: string
+  sshUrl: string
+  collaboratorsUrl: string
+  contentsUrl: string
+  description: string | null
+  updatedAt: string
   defaultBranch: string
 }
 
