@@ -1,8 +1,13 @@
 <script setup lang="ts">
+import { useRoute, useRouter } from 'vue-router'
+
 import { VSearchItem } from '@/entities/search'
 
 import { useSearchRepositories, useSearchUsers } from '@/shared/api/search'
 import { VInput } from '@/shared/ui/VInput'
+
+const route = useRoute()
+const router = useRouter()
 
 const query = ref('')
 const queryDebounced = refDebounced(query, 1000)
@@ -15,12 +20,16 @@ const { data: users } = useSearchUsers(queryDebounced)
 const { data: repositories } = useSearchRepositories(queryDebounced)
 
 const repositoriesArray = computed(() => {
-  if (repositories.value !== undefined)
+  if (repositories.value !== undefined) {
     return repositories.value.items.slice(0, 3)
+  }
+  return []
 })
 const usersArray = computed(() => {
-  if (users.value !== undefined)
+  if (users.value !== undefined) {
     return users.value.items.splice(0, 3)
+  }
+  return []
 })
 
 onClickOutside(form, () => isShow.value = false)
@@ -28,6 +37,22 @@ onClickOutside(form, () => isShow.value = false)
 onKeyStroke('Escape',
   () => {
     (document.activeElement as HTMLElement).blur()
+    isShow.value = false
+  },
+)
+
+watch(() => route.query.query, (value) => {
+  if (value !== query.value && value && !Array.isArray(value)) {
+    query.value = value
+  }
+}, { immediate: true })
+
+onKeyStroke('Enter',
+  () => {
+    router.push({
+      name: 'SearchPage',
+      query: { query: query.value, type: 'users' },
+    })
     isShow.value = false
   },
 )
