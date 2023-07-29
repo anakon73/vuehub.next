@@ -9,6 +9,7 @@ import { VUserCard } from '@/entities/user'
 import { useSearchRepositories, useSearchUsers } from '@/shared/api/search'
 import { VButton } from '@/shared/ui/VButton'
 import { useClasses } from '@/shared/lib/composables'
+import { VPagination } from '@/shared/ui/VPagination'
 
 const route = useRoute()
 const router = useRouter()
@@ -26,15 +27,28 @@ const query = computed(() => {
   }
 })
 
-const {
-  data: repositories,
-  isFetching: isFetchingRepositories,
-} = useSearchRepositories(query)
+const userPage = ref(1)
+const repositoriesPage = ref(1)
 
 const {
   data: users,
   isFetching: isFetchingUsers,
-} = useSearchUsers(query)
+} = useSearchUsers(query, userPage)
+const {
+  data: repositories,
+  isFetching: isFetchingRepositories,
+} = useSearchRepositories(query, repositoriesPage)
+
+const usersPages = computed(() => {
+  if (users.value !== undefined) {
+    return Math.round(users.value.totalCount / 10)
+  }
+})
+const repositoriesPages = computed(() => {
+  if (repositories.value !== undefined) {
+    return Math.round(repositories.value.totalCount / 10)
+  }
+})
 </script>
 
 <template>
@@ -56,26 +70,45 @@ const {
       <div v-if="isFetchingRepositories || isFetchingUsers">
         Loading
       </div>
-      <VRepositoryCard
-        v-for="repo in repositories?.items"
-        v-else-if="type === 'repositories'"
-        :key="repo.id"
-        class="mb-7 shadow-[0px_5px_0px_0px_#2975C1]"
-        :repository="repo"
-      />
-      <VUserCard
-        v-for="user in users?.items"
-        v-else-if="type === 'users'"
-        :key="user.id"
-        class="mb-7 shadow-[0px_5px_0px_0px_#2975C1]"
-        :user="user"
-      />
+      <div v-else-if="type === 'repositories'">
+        <VRepositoryCard
+          v-for="repo in repositories?.items"
+          :key="repo.id"
+          class="mb-7 shadow-[0px_5px_0px_0px_#2975C1]"
+          :repository="repo"
+        />
+        <VPagination
+          :total-pages="repositoriesPages!"
+          :current-page="repositoriesPage"
+          @last-page="repositoriesPage = repositoriesPages!"
+          @first-page="repositoriesPage = 1"
+          @prev-page="repositoriesPage -= 1"
+          @next-page="repositoriesPage += 1"
+        />
+      </div>
+      <div v-else-if="type === 'users'">
+        <VUserCard
+          v-for="user in users?.items"
+          :key="user.id"
+          class="mb-7 shadow-[0px_5px_0px_0px_#2975C1]"
+          :user="user"
+        />
+        <VPagination
+          :total-pages="usersPages!"
+          :current-page="userPage"
+          @last-page="userPage = usersPages!"
+          @first-page="userPage = 1"
+          @prev-page="userPage -= 1"
+          @next-page="userPage += 1"
+        />
+      </div>
     </div>
     <div class="mt-[4.3rem] flex flex-col gap-7">
       <div v-for="btn in ['users', 'repositories']" :key="btn">
         <a
           :class="useClasses([
             'bg-gradient-to-r to-white block rounded-md py-3 pl-5 pr-20',
+            'cursor-pointer select-none',
             btn === type ? 'from-blue-500' : 'from-zinc-100',
           ])"
           @click="router.replace({ query: { query, type: btn } })"
