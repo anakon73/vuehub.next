@@ -78,6 +78,7 @@ const repositoriesPages = computed(() => {
           :repository="repo"
         />
         <VPagination
+          v-if="repositoriesPages! > 1"
           :total-pages="repositoriesPages!"
           :current-page="repositoriesPage"
           @last-page="repositoriesPage = repositoriesPages!"
@@ -94,6 +95,7 @@ const repositoriesPages = computed(() => {
           :user="user"
         />
         <VPagination
+          v-if="usersPages! > 1"
           :total-pages="usersPages!"
           :current-page="userPage"
           @last-page="userPage = usersPages!"
