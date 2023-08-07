@@ -86,6 +86,11 @@ const repositoriesPages = computed(() => {
           @prev-page="repositoriesPage -= 1"
           @next-page="repositoriesPage += 1"
         />
+        <div
+          class="mx-auto max-w-xl text-center text-4xl font-bold leading-normal"
+        >
+          Repositories is not found by {{ query }}
+        </div>
       </div>
       <div v-else-if="type === 'users'">
         <VUserCard
@@ -103,6 +108,11 @@ const repositoriesPages = computed(() => {
           @prev-page="userPage -= 1"
           @next-page="userPage += 1"
         />
+        <div
+          class="mx-auto max-w-xl text-center text-4xl font-bold leading-normal"
+        >
+          Users is not found by {{ query }}
+        </div>
       </div>
     </div>
     <div class="mt-[4.3rem] flex flex-col gap-7">
